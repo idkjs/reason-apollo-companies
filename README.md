@@ -1,4 +1,4 @@
-# Reason Apollo Todo List
+# Reason Apollo French Tech Companies
 
 #### Running the GraphQL server
 ```
@@ -14,5 +14,3 @@ yarn get-schema
 ```
 yarn start
 ```
-
-## Enjoy 
