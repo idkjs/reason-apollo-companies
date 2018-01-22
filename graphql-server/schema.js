@@ -1,61 +1,43 @@
 import { log } from 'async';
-
+// import { companies } from './companies.json'
 // graphql-tools combines a schema string with resolvers.
-const {makeExecutableSchema} = require('graphql-tools');
+const { makeExecutableSchema } = require('graphql-tools');
 
-let todos = [
-  { id: "1", active: true, title: "One"},
-  { id: "2", active: false, title: "Two"}
-];
+let companies = require("./companies.json");
+
 
 // Construct a schema, using GraphQL schema language
 const typeDefs = `
-	input TodoInput {
-		title: String!
-    active: Boolean!
-  }
     
-	type Todo {
+	type Company {
     id: ID!
-    title: String!
-    active: Boolean!
+    url: String!
+    logo: String!
+    name: String!
+    employees: Int!
+    tranch: String!
+    address: String!
+    location: String!
+    sector: String!
+    description: String!
+    facebook: String!
+    instagram: String!
+    youtube: String!
+    twitter: String!
   }
     
   type Query {
-    todos: [Todo!]!
+    companies: [Company!]!
   }
 
-	type Mutation {
-		deleteTodo(id: ID!): [Todo]
-		toggleTodo(id: ID!): Todo!
-		addTodo(title: String!, active: Boolean!): [Todo]
-	}
 `;
 
 // Provide resolver functions for your schema fields
 const resolvers = {
   Query: {
-    todos: () => todos
-  },
-  Mutation: {
-    deleteTodo: (_, {id}) => {
-      todos = todos.filter(todo => todo.id !== id);
-      return todos;
-    },
-    toggleTodo: (_, {id}) => {
-      let resultTodo;
-      todos = todos.map(todo => todo.id === id ? (resultTodo = todo && {...todo, active: !todo.active}) : todo)
-      return resultTodo;
-    },
-    addTodo: (_, {title, active}) => {
-      todos = [
-        ...todos, 
-        {
-          id: "" + (parseInt(todos[todos.length - 1].id) + 1),
-          title,
-          active
-        }];
-        return todos;
+    companies: () => {
+      console.log(companies.length)
+      return companies
     }
   }
 };
