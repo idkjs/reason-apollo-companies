@@ -18,7 +18,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start:server": "nodemon graphql-server/index.js --exec babel-node --presets env,stage-2",
+    "start:server":
+      "nodemon graphql-server/index.js --exec babel-node --presets env,stage-2",
     "get-schema": "yarn send-introspection-query http://localhost:3010/graphql",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
@@ -36,7 +37,7 @@
     "express": "^4.16.2",
     "graphql": "^0.12.3",
     "graphql-tools": "^2.18.0",
-    "graphql_ppx": "^0.0.1",
+    "graphql_ppx": "^0.2.0",
     "nodemon": "^1.14.11",
     "reason-react": "^0.3.1"
   }
